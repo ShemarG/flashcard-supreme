@@ -1,0 +1,85 @@
+body{
+	background-color: #c6a1ff;
+	background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+@font-face{
+	font-family: "Crushed";
+	src: url("Crushed.ttf") format("truetype");
+}
+
+@font-face{
+	font-family:"Pangolin";
+	src: url("Pangolin-Regular.ttf") format("truetype");
+}
+
+#homeButton{
+	height: 50px;
+	width: 150px;
+	border: 1.5px solid black;
+	border-radius: 15px;
+	margin: 10px;
+	background-image: linear-gradient(rgba(255,255,255,1), rgba(148,77,255,0.8));
+	font-variant: small-caps;
+}
+
+.section{
+	font-size: 26pt;
+}
+
+.textbox{
+	background-color: black;
+	color: white;
+	width: 60%;
+	border-radius: 15px;
+	word-wrap: break-word;
+	padding: 15px;
+	margin: 10px;
+	font-family: Arial;
+	border: 2px solid white;
+	font-size: 14pt;
+}
+
+#restoreButton{
+	height: 50px;
+	width: 150px;
+	border: 1.5px solid black;
+	border-radius: 15px;
+	margin: 10px;
+	background-image: linear-gradient(rgba(255,255,255,1), rgba(148,77,255,0.8));
+	font-variant: small-caps;
+}
+
+#importButton{
+	height: 50px;
+	width: 150px;
+	border: 1.5px solid black;
+	border-radius: 15px;
+	margin: 10px;
+	background-image: linear-gradient(rgba(255,255,255,1), rgba(148,77,255,0.8));
+	font-variant: small-caps;
+}
+
+h3{
+	font-family: Pangolin;
+	font-size: 24pt;
+	margin: 10px;
+}
+
+h1{
+	font-family: Crushed;
+	font-size: 72pt;
+	margin: 10px;
+	text-align: center;
+}
+
+#mainContainer{
+	display: inline;
+}
+
+.fields{
+	resize: none;
+	font-family: Lucida Console;
+	padding: 10px;
+	border: 1px dashed black;
+}

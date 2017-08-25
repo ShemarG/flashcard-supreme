@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Backup & Restore</title>
+	<script type="text/javascript" src="jquery-3.1.1.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="style_backup&restore.css">
+</head>
+<body>
+	<h1>Backup & Restore</h1>
+	<center>
+		<a href="index.html"><button id='homeButton'>Home</button></a>
+		<div id="mainContainer">
+			<div>
+				<h3 class="section">Backup</h3>
+				<div class="textbox">
+					<p> If you clear your browsing data you will lose all of your progress! <br><br> ...But fear not! <br><br> The data in the textfield below has all of your progress in a data format. Copy and save this data somewhere safe, Notepad is a good idea. <br><br> Backup often! <br><br> Heres a tip! Click inside the text field and then press Ctrl/Cmd + A to make sure you get everything.</p>
+				</div>
+				<textarea rows="10" cols="100" class="fields" id="backup"></textarea>
+			</div>
+			<div>
+				<h3 class="section">Restore</h3>
+				<div class="textbox">
+					<p>Paste saved data here to restore an earlier backed-up version. <br><br> Make sure you copied the saved data properly to prevent corrupt data. <br><br> Once you've restored data it cannot be undone! So be careful! </p>
+				</div>
+				<textarea rows="10" cols="100" class="fields" id="restore" placeholder="Paste here"></textarea><br>
+				<button id="restoreButton">Restore</button>
+			</div>
+			<div>
+				<h3 class="section">Import</h3>
+				<div class="textbox">
+					<p>If someone shared a flashcard group with you, import them here! One group at a time though.</p>
+				</div>
+				<textarea rows="10" cols="100" class="fields" id="import" placeholder="Paste here"></textarea><br>
+				<button id="importButton">Import</button>
+			</div>
+		</div>
+	</center>
+</body>
+
+<script>
+	var subjects = {};
+
+	if (localStorage.subjectArr !== undefined){
+		subjects = JSON.parse(localStorage.subjectArr);
+	}
+
+	var backup = localStorage.subjectArr;
+	$("#backup").val(backup)
+	$("#backup").prop("readOnly", true);
+
+	$("#restoreButton").click(function(){
+		var sure = confirm("Are you sure you want to restore using this data? Current data will be lost.")
+		if (sure == true){
+			var suresure = confirm("Super sure? This cannot be undone!");
+			if (suresure == true) {
+				var toRestore = $("#restore").val();
+				localStorage.subjectArr = toRestore;
+				window.location.href = "index.html";
+			}else{}
+		}else{}
+	});
+
+	$("#importButton").click(function(){
+		var sure = confirm("Are you sure you want to import?");
+
+		if(sure == true){
+			var toImport = $("#import").val();
+			var parse = JSON.parse(toImport);
+
+			for (var key in parse){
+				subjects[parse[key].subjectName] = parse[key];
+			}
+			localStorage.setItem("subjectArr", JSON.stringify(subjects));
+		}
+	});
+</script>
+
+</html>

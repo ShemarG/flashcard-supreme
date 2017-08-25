@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Study Suite</title>
+  <script type="text/javascript" src="jquery-3.1.1.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="style_create.css">
+</head>
+<body>
+	<center>
+		<h1>New Subject</h1>
+		<a href="index.html"><button id="homeButton">Home</button></a><br>
+		<input id="subjName" type='text' placeholder="Enter name"></input><input id="submit" type="button" value="Enter"></input>
+	</center>
+</body>
+<script>
+	//localStorage.clear();
+	var subjects = {};
+
+	if(localStorage.subjectArr !== undefined){
+		subjects = JSON.parse(localStorage.subjectArr);
+		console.log(subjects);
+	}else{}
+
+	var vars = {};
+	$("#submit").click(function(){
+		var sName = $("#subjName").val();
+		var sName2 = sName.replace(/\s/g, "");
+		vars[sName2] = {subjectName: sName2, displayName: sName, questions:[]};
+
+		for (var key in vars) {
+			subjects[key] = vars[key]
+		};
+		
+		localStorage.setItem("subjectArr", JSON.stringify(subjects));
+		$("#subjName").val("");
+
+		alert("Subject Created!");
+
+		console.log(JSON.parse(localStorage.subjectArr));	
+	})
+
+</script>
+</html>

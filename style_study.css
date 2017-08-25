@@ -1,0 +1,91 @@
+@font-face{
+	font-family:"Pangolin";
+	src: url("Pangolin-Regular.ttf") format("truetype");
+}
+
+@font-face{
+	font-family: "Crushed";
+	src: url("Crushed.ttf") format("truetype");
+}
+
+body{
+	background-color: #c6a1ff;
+	background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+#homeButton{
+	height: 50px;
+	width: 150px;
+	border: 1.5px solid black; 
+	border-radius: 15px;
+	background-image: linear-gradient(rgba(255,255,255,1), rgba(148,77,255,0.8));
+	font-variant: small-caps;
+}
+
+#comment{
+	font-size: 24pt;
+	font-family: Crushed;
+	margin: auto;
+}
+
+.num{
+	display: inline;
+	font-family: lucida console;
+	font-size: 20pt;
+	background-color: black;
+	border-radius: 15px;
+	border: 3px solid;
+	padding: 10px;
+}
+
+.buttonDiv{
+	display: inline;
+	margin: 50px;
+}
+
+#title{
+	font-family: Pangolin;
+	font-size: 60pt;
+	margin: 15px;
+	text-shadow: -1.5px 0 black, 0 1.5px black, 1.5px 0 black, 0 -1.5px black;
+}
+
+#responseDiv{
+	margin: 20px;
+	word-wrap: break-word;
+}
+
+#streak{
+	font-family: arial;
+	font-size: 20pt;
+	font-variant: small-caps;
+}
+
+#questionDiv{
+	margin: 10px;
+	height: auto;
+	width: 800px;
+	background-color: black;
+	padding: 5px;
+	word-wrap: break-word;
+	border: 5px groove;
+	border-radius: 15px;
+	font-variant: small-caps;
+	font-size: 20pt;
+}
+
+.answerButtons{
+	height: auto;
+	width: 400px;
+	margin: 5px;
+	border: 1px solid black;
+	border-radius: 7px;
+	word-wrap: break-word;
+	font-variant: small-caps;
+	font-size: 14pt;
+
+}
+
+#answerDiv1{
+	margin-bottom: 50px;
+}
