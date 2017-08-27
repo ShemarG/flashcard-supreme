@@ -5,6 +5,7 @@ $(document).ready(function(){
 	var currentArray = subjects[gotSubject];
 
 	var saveState;
+	var changes = 0
 
 	var themeArray = [
 		{rgb:"rgb(255,51,51)", colorName:"Red"},
@@ -34,9 +35,12 @@ $(document).ready(function(){
 	];
 
 	$(document).on("change", "body", function(){
+
+		if (changes == 0){
+			$("#save").toggleClass("active");
+		}
+		changes++;
 		saveState = 1;
-		$("#save").css("background-image", "linear-gradient(rgba(255,255,255,0.6), rgba(128,255,0,1))")
-		$("#save").css("border", "1px solid black")
 		console.log(saveState);
 	})
 
@@ -46,7 +50,7 @@ $(document).ready(function(){
 
 	$("body").append("\
 		<center>\
-			<h1>" + currentArray.displayName + "</h1>\
+			<div class='title'><h1>" + currentArray.displayName + "</h1></div>\
 			<a href='index.html'>\
 				<button id='homeButton'>Home</button>\
 			</a>\
@@ -231,9 +235,9 @@ function read(){
 	})
 
 	function save(){
+		changes = 0;
 		saveState = 0;
-		$("#save").css("background-image", "linear-gradient(rgba(255,255,255,0.6), rgba(194,194,214,1))");
-		$("#save").css("border", "1px solid black");
+		$("#save").toggleClass("active");
 		console.log(saveState);
 		read();
 	}
@@ -255,7 +259,7 @@ function read(){
 		var c = b+1;
 		$("#container").append("\
 			<center>\
-				<div class='questionDiv' style='border: solid black 2px; padding:5px;'>\
+				<div class='questionDiv'>\
 					<textarea class='qclass' id='q" + c + "' rows='6' cols='45' style='resize:none; 'placeholder='Enter question here' type='text'></textarea>\
 					<textarea class='aclass' id='a" + c + "' rows='6' cols='45' style='resize:none; 'placeholder='Enter answer here'type='text'></textarea><br>\
 					<button class='deleteButton'>Delete</button><br>\
