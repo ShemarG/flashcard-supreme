@@ -29,7 +29,7 @@ $(document).ready(function(){
 		")
 
 		for (var key in subjects){
-		
+
 			if(subjects.hasOwnProperty(key)){
 
 				console.log(subjects[key].themeColor);
@@ -59,7 +59,7 @@ $(document).ready(function(){
 			console.log(localStorage.setSubject);
 			currentArray = subjects[a];
 			window.location.href = "index_edit.html";
-			
+
 		});
 
 		$(".studyButton").click(function(){
@@ -72,7 +72,7 @@ $(document).ready(function(){
 			}else{
 				window.location.href = "index_study.html";
 			}
-			
+
 		});
 
 		$(".divButtons").hide();
@@ -88,9 +88,15 @@ $(document).ready(function(){
 		$(".subjectDiv").mouseenter(function(){
 			$(this).find("button").stop(true, true).show(125);
 			$(this).find(".brief").stop(true, true).show(125);
-		}).mouseleave(function(){	
+		}).mouseleave(function(){
 			$(this).find("button").stop(true, true).hide(125);
 			$(this).find(".brief").stop(true, true).hide(125);
+		})
+
+		$(".menu").mouseenter(function(){
+			$(this).toggleClass("active");
+		}).mouseleave(function(){
+			$(this).toggleClass("active");
 		})
 
 

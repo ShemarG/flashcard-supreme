@@ -13,7 +13,7 @@ body{
 	src: url("Pangolin-Regular.ttf") format("truetype");
 }
 
-#homeButton{
+.buttons {
 	height: 50px;
 	width: 150px;
 	border: 1.5px solid black;
@@ -21,6 +21,14 @@ body{
 	margin: 10px;
 	background-image: linear-gradient(rgba(255,255,255,1), rgba(148,77,255,0.8));
 	font-variant: small-caps;
+	-webkit-transition: 0.5s;
+	transition: 0.5s;
+}
+
+.buttons.active {
+  -webkit-box-shadow: 0 0 30px cyan;
+  -moz-box-shadow: 0 0 30px cyan;
+  box-shadow: 0 0 30px cyan;
 }
 
 .section{
@@ -38,26 +46,6 @@ body{
 	font-family: Arial;
 	border: 2px solid white;
 	font-size: 14pt;
-}
-
-#restoreButton{
-	height: 50px;
-	width: 150px;
-	border: 1.5px solid black;
-	border-radius: 15px;
-	margin: 10px;
-	background-image: linear-gradient(rgba(255,255,255,1), rgba(148,77,255,0.8));
-	font-variant: small-caps;
-}
-
-#importButton{
-	height: 50px;
-	width: 150px;
-	border: 1.5px solid black;
-	border-radius: 15px;
-	margin: 10px;
-	background-image: linear-gradient(rgba(255,255,255,1), rgba(148,77,255,0.8));
-	font-variant: small-caps;
 }
 
 h3{

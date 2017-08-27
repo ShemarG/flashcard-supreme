@@ -2,13 +2,14 @@
 <html>
 <head>
 	<title>Backup & Restore</title>
+	<link rel="shortcut icon" type="image/x-icon" href="pencil_JsJ_icon.ico"/>
 	<script type="text/javascript" src="jquery-3.1.1.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="style_backup&restore.css">
 </head>
 <body>
 	<h1>Backup & Restore</h1>
 	<center>
-		<a href="index.html"><button id='homeButton'>Home</button></a>
+		<a href="index.html"><button class="buttons" id='homeButton'>Home</button></a>
 		<div id="mainContainer">
 			<div>
 				<h3 class="section">Backup</h3>
@@ -23,7 +24,7 @@
 					<p>Paste saved data here to restore an earlier backed-up version. <br><br> Make sure you copied the saved data properly to prevent corrupt data. <br><br> Once you've restored data it cannot be undone! So be careful! </p>
 				</div>
 				<textarea rows="10" cols="100" class="fields" id="restore" placeholder="Paste here"></textarea><br>
-				<button id="restoreButton">Restore</button>
+				<button class="buttons" id="restoreButton">Restore</button>
 			</div>
 			<div>
 				<h3 class="section">Import</h3>
@@ -31,7 +32,7 @@
 					<p>If someone shared a flashcard group with you, import them here! One group at a time though.</p>
 				</div>
 				<textarea rows="10" cols="100" class="fields" id="import" placeholder="Paste here"></textarea><br>
-				<button id="importButton">Import</button>
+				<button class="buttons" id="importButton">Import</button>
 			</div>
 		</div>
 	</center>
@@ -73,6 +74,14 @@
 			localStorage.setItem("subjectArr", JSON.stringify(subjects));
 		}
 	});
+
+	$(".buttons").mouseenter(function(){
+		$(this).toggleClass("active");
+	}).mouseleave(function(){
+		$(this).toggleClass("active");
+	})
+
+
 </script>
 
 </html>

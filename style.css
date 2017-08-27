@@ -41,9 +41,10 @@ body{
 	height: 25px;
 	margin-left: 15px;
 	margin-right: 15px;
+	margin-top: 15px;
 	padding: 5px;
 	width: 75px;
-	height: 35px;
+	height: 27px;
 	border-radius: 20px;
 	border: 1px solid black;
 	background-image: linear-gradient(rgba(255,255,255,1), rgba(148,77,255,0.8));
@@ -54,7 +55,7 @@ body{
 .subjTitle{
 	font-family: Pangolin;
 	font-variant: small-caps;
-	font-size: 24pt;
+	font-size: 200%;
 	margin: auto;
 }
 
@@ -71,5 +72,14 @@ body{
 	margin: 10px;
 	background-image: linear-gradient(rgba(255,255,255,1), rgba(148,77,255,0.8));
 	font-variant: small-caps;
+	-webkit-transition: 0.5s;
+	transition: 0.5s;
 
+}
+
+.menu.active {
+
+    -webkit-box-shadow: 0 0 30px cyan;
+       -moz-box-shadow: 0 0 30px cyan;
+            box-shadow: 0 0 30px cyan;
 }

@@ -16,7 +16,7 @@ body{
 #homeButton{
 	height: 50px;
 	width: 150px;
-	border: 1.5px solid black; 
+	border: 1.5px solid black;
 	border-radius: 15px;
 	background-image: linear-gradient(rgba(255,255,255,1), rgba(148,77,255,0.8));
 	font-variant: small-caps;
@@ -45,7 +45,7 @@ body{
 
 #title{
 	font-family: Pangolin;
-	font-size: 60pt;
+	font-size: 500%;
 	margin: 15px;
 	text-shadow: -1.5px 0 black, 0 1.5px black, 1.5px 0 black, 0 -1.5px black;
 }

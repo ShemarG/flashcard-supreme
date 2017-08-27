@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link rel="shortcut icon" type="image/x-icon" href="pencil_JsJ_icon.ico"/>
   <title>Study Suite</title>
   <script type="text/javascript" src="jquery-3.1.1.min.js"></script>
   <link rel="stylesheet" type="text/css" href="style_create.css">
@@ -30,13 +31,13 @@
 		for (var key in vars) {
 			subjects[key] = vars[key]
 		};
-		
+
 		localStorage.setItem("subjectArr", JSON.stringify(subjects));
 		$("#subjName").val("");
 
 		alert("Subject Created!");
 
-		console.log(JSON.parse(localStorage.subjectArr));	
+		console.log(JSON.parse(localStorage.subjectArr));
 	})
 
 </script>

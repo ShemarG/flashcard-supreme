@@ -44,13 +44,13 @@ $(document).ready(function(){
 		correct = questionsArray[randomIndex].a;
 
 		for(i=0; i<questionsArray.length; i++){
-			
+
 			if (i != displayArray[0]){
 
 				indexArray.push(i);
 			}else{}
 		}
-			
+
 		shuffleArray(indexArray);
 
 		for (i=0; i<3; i++){
@@ -81,7 +81,7 @@ $(document).ready(function(){
 	 		$("#streak").empty();
 	 		$("#comment").empty();
 	 		$("#streak").append("Streak: " + streak);
-	 		$("#comment").append(boostRand);
+	 		$("#comment").append("<p style='color:green;'>" + boostRand + "</p>");
 	 		$("#comment").css("opacity", "1")
 	 		$("#comment").hide();
 	 		$("#comment").fadeIn("slow", function(){
@@ -97,7 +97,7 @@ $(document).ready(function(){
 	 		$("#streak").empty();
 	 		$("#comment").empty();
 	 		$("#streak").append("Streak: " + streak);
-	 		$("#comment").append("Incorrect, the correct answer was: " + correct);
+	 		$("#comment").append("<p style='color: red;'> Incorrect, the correct answer was: <u>" + correct + "</u></p>");
 	 		$("#comment").css("opacity", "1")
 	 		$("#comment").hide();
 	 		$("#comment").fadeIn("slow");
@@ -134,5 +134,5 @@ $(document).ready(function(){
        		$("#b4").click();
        }
  	});
-	
+
 })
