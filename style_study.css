@@ -45,7 +45,7 @@ body{
 
 #title{
 	font-family: Pangolin;
-	font-size: 500%;
+	font-size: 400%;
 	margin: 15px;
 	text-shadow: -1.5px 0 black, 0 1.5px black, 1.5px 0 black, 0 -1.5px black;
 }
@@ -71,7 +71,7 @@ body{
 	border: 5px groove;
 	border-radius: 15px;
 	font-variant: small-caps;
-	font-size: 20pt;
+	font-size: 16pt;
 }
 
 .answerButtons{
@@ -82,10 +82,10 @@ body{
 	border-radius: 7px;
 	word-wrap: break-word;
 	font-variant: small-caps;
-	font-size: 14pt;
+	font-size: 12pt;
 
 }
 
-#answerDiv1{
+#answerDiv1, #answerDiv2{
 	margin-bottom: 50px;
 }

@@ -53,7 +53,7 @@ $(document).ready(function(){
 
 		shuffleArray(indexArray);
 
-		for (i=0; i<3; i++){
+		for (i=0; i<5; i++){
 
 			displayArray.push(indexArray[i]);
 		}
@@ -132,6 +132,18 @@ $(document).ready(function(){
  	$(document).keyup(function(event){
        if (event.keyCode == 52 || event.keyCode == 100){
        		$("#b4").click();
+       }
+ 	});
+
+	$(document).keyup(function(event){
+       if (event.keyCode == 53 || event.keyCode == 100){
+       		$("#b5").click();
+       }
+ 	});
+
+	$(document).keyup(function(event){
+       if (event.keyCode == 54 || event.keyCode == 100){
+       		$("#b6").click();
        }
  	});
 
