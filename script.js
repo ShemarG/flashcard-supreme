@@ -67,8 +67,8 @@ $(document).ready(function(){
 			localStorage.setSubject = a.data("sub");
 			console.log(localStorage.setSubject);
 			currentArray = subjects[a.data("sub")];
-			if(currentArray.questions.length < 4){
-				alert("You need at least 4 questions to get started!")
+			if(currentArray.questions.length < 6){
+				alert("You need at least 6 questions to get started!")
 			}else{
 				window.location.href = "index_study.html";
 			}
