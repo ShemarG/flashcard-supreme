@@ -67,8 +67,8 @@ $(document).ready(function(){
 		console.log(subjects)
 
 		$(".subjectButton").click(function(){
-			var a = $(this).parent();
-			localStorage.setSubject = a.data("sub");
+			var a = $(this).data("sub");
+			localStorage.setSubject = a;
 			window.location.href = "index_subject.html";
 		});
 
