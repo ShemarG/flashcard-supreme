@@ -1,5 +1,7 @@
 $(document).ready(function(){
 
+	// localStorage.clear()
+
 	var currentArray;
 
 	if (localStorage.subjectArr === undefined){
@@ -7,7 +9,7 @@ $(document).ready(function(){
 			<h1>Flashcard Supreme</h1>\
 			<center>\
 				<a href='index_create.html'>\
-					<button class='menu'>New subject/Topic</button>\
+					<button class='menu'>New Subject</button>\
 				</a>\
 				<a href='index_backup&restore.html'>\
 					<button class='menu'>Backup & Restore</button>\
@@ -20,7 +22,7 @@ $(document).ready(function(){
 			<h1>Flashcard Supreme</h1>\
 			<center>\
 				<a href='index_create.html'>\
-					<button class='menu'>New subject/Topic</button>\
+					<button class='menu'>New Subject</button>\
 				</a>\
 				<a href='index_backup&restore.html'>\
 					<button class='menu'>Backup & Restore</button>\
@@ -35,37 +37,58 @@ $(document).ready(function(){
 				console.log(subjects[key].themeColor);
 
 				if(subjects[key].brief === undefined || subjects[key].brief == ""){
+
 					$("#container").append("\
-						<div style='background-color:" + subjects[key].themeColor + "; border-color:" + subjects[key].themeColor + ";' data-sub='" + subjects[key].subjectName + "' class='subjectDiv'><p class='subjTitle'>" + subjects[key].displayName + "</p>\
-							<button style='background-color:" + subjects[key].themeColor + ";' class='studyButton divButtons'>Study</button>\
-							<button style='background-color:" + subjects[key].themeColor + ";' class='editButton divButtons'>Edit</button>\
-						</div><br>\
-					");
+						<button style='background-color:" + subjects[key].themeColor + ";' data-sub='" + subjects[key].subjectName + "' class='subjectButton'><p class='subjTitle'>" + subjects[key].displayName + "</p></button>\
+					")
+					// $("#container").append("\
+					// 	<div style='background-color:" + subjects[key].themeColor + "; border-color:" + subjects[key].themeColor + ";' data-sub='" + subjects[key].subjectName + "' class='subjectDiv'><p class='subjTitle'>" + subjects[key].displayName + "</p>\
+					// 		<button style='background-color:" + subjects[key].themeColor + ";' class='studyButton divButtons'>Quiz</button>\
+					// 		<button style='background-color:" + subjects[key].themeColor + ";' class='reviewButton divButtons'>Review</button>\
+					// 		<button style='background-color:" + subjects[key].themeColor + ";' class='editButton divButtons'>Edit</button>\
+					// 	</div><br>\
+					// ");
 				}else{
 					$("#container").append("\
-						<div style='background-color:" + subjects[key].themeColor + "; border-color:" + subjects[key].themeColor + ";' data-sub='" + subjects[key].subjectName + "' class='subjectDiv'><p class='subjTitle'>" + subjects[key].displayName + "</p>\
-							<p class='brief'>" + subjects[key].brief + "</p>\
-							<button style='background-color:" + subjects[key].themeColor + ";' class='studyButton divButtons'>Study</button>\
-							<button style='background-color:" + subjects[key].themeColor + ";' class='editButton divButtons'>Edit</button>\
-						</div><br>\
-					");
+						<button style='background-color:" + subjects[key].themeColor + ";' data-sub='" + subjects[key].subjectName + "' class='subjectButton'><p class='subjTitle'>" + subjects[key].displayName + "</p><p class='brief'>" + subjects[key].brief + "</p></button>\
+					")
+					// $("#container").append("\
+					// 	<div style='background-color:" + subjects[key].themeColor + "; border-color:" + subjects[key].themeColor + ";' data-sub='" + subjects[key].subjectName + "' class='subjectDiv'><p class='subjTitle'>" + subjects[key].displayName + "</p>\
+					// 		<p class='brief'>" + subjects[key].brief + "</p>\
+					// 		<button style='background-color:" + subjects[key].themeColor + ";' class='studyButton divButtons'>Quiz</button>\
+					// 		<button style='background-color:" + subjects[key].themeColor + ";' class='reviewButton divButtons'>Review</button>\
+					// 		<button style='background-color:" + subjects[key].themeColor + ";' class='editButton divButtons'>Edit</button>\
+					// 	</div><br>\
+					// ");
 				}
 			}
 		}
 
+		console.log(subjects)
+
+		$(".subjectButton").click(function(){
+			var a = $(this).parent();
+			localStorage.setSubject = a.data("sub");
+			window.location.href = "index_subject.html";
+		});
+
 		$(".editButton").click(function(){
 			var a = $(this).parent();
 			localStorage.setSubject = a.data("sub");
-			console.log(localStorage.setSubject);
-			currentArray = subjects[a];
 			window.location.href = "index_edit.html";
+
+		});
+
+		$(".reviewButton").click(function(){
+			var a = $(this).parent();
+			localStorage.setSubject = a.data("sub");
+			window.location.href = "index_review.html";
 
 		});
 
 		$(".studyButton").click(function(){
 			var a = $(this).parent();
 			localStorage.setSubject = a.data("sub");
-			console.log(localStorage.setSubject);
 			currentArray = subjects[a.data("sub")];
 			if(currentArray.questions.length < 6){
 				alert("You need at least 6 questions to get started!")
@@ -85,7 +108,7 @@ $(document).ready(function(){
 			$(this).css("background-image", "linear-gradient(rgba(255,255,255,1), rgba(148,77,255,0.8)")
 		})
 
-		$(".subjectDiv").mouseenter(function(){
+		$(".subjectButton").mouseenter(function(){
 			$(this).find("button").stop(true, true).show(125);
 			$(this).find(".brief").stop(true, true).show(125);
 		}).mouseleave(function(){

@@ -26,7 +26,7 @@
 	$("#submit").click(function(){
 		var sName = $("#subjName").val();
 		var sName2 = sName.replace(/\s/g, "");
-		vars[sName2] = {subjectName: sName2, displayName: sName, questions:[]};
+		vars[sName2] = {subjectName: sName2, displayName: sName, topics: []};
 
 		for (var key in vars) {
 			subjects[key] = vars[key]

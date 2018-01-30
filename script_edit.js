@@ -108,7 +108,8 @@ $(document).ready(function(){
 				<center>\
 					<div class='questionDiv'>\
 						<textarea class='qclass' id='q1' rows='6' cols='45' style='resize:none; 'placeholder='Enter question here' type='text'></textarea>\
-						<textarea class='aclass' id='a1' rows='6' cols='45' style='resize:none; 'placeholder='Enter answer here'type='text'></textarea><br>\
+						<textarea class='aclass' id='a1' rows='6' cols='45' style='resize:none; 'placeholder='Enter answer here'type='text'></textarea>\
+						<textarea class='aclass' id='n1' rows='6' cols='45' style='resize:none; 'placeholder='Enter notes here'type='text'></textarea><br>\
 						<button class='deleteButton'>Delete</button><br>\
 					</div>\
 				</center>\
@@ -139,7 +140,8 @@ $(document).ready(function(){
 				<center>\
 					<div class='questionDiv'>\
 						<textarea class='qclass' rows='6' cols='45' style='resize:none; 'placeholder='Enter question here' type='text'>" + currentArray.questions[i].q + "</textarea>\
-						<textarea class='aclass' rows='6' cols='45' style='resize:none; 'placeholder='Enter answer here'type='text'>" + currentArray.questions[i].a + "</textarea><br>\
+						<textarea class='aclass' rows='6' cols='45' style='resize:none; 'placeholder='Enter answer here' type='text'>" + currentArray.questions[i].a + "</textarea>\
+						<textarea class='nclass' rows='6' cols='45' style='resize:none; 'placeholder='Enter notes here' type='text'></textarea><br>\
 						<button class='deleteButton'>Delete</button><br>\
 					</div>\
 				</center>\
@@ -152,7 +154,6 @@ $(document).ready(function(){
 	$("#export").val('{"' + currentArray.subjectName + '":' + JSON.stringify(currentArray) + '}')
 
 
-
 function read(){
 		var a = $("#container").find(".questionDiv");
 		var vars = {};
@@ -163,6 +164,7 @@ function read(){
 		//generic counters
 		var i1 = 0;
 		var i2 = 0;
+		var i3 = 0;
 
 		//question module
   		$(".qclass").each(function(){
@@ -174,6 +176,12 @@ function read(){
   		$(".aclass").each(function(){
     		i2++;
     		$(this).attr("id", ("a"+ i2))
+  		})
+
+			//notes module
+			$(".nclass").each(function(){
+    		i3++;
+    		$(this).attr("id", ("n"+ i3))
   		})
 
   		//reads the values
@@ -191,8 +199,11 @@ function read(){
 				alert("There are empty fields, did not save. Enter a value or delete the field")
 				return;
 			}
+			if ( $("#n"+ (i+1)).val() != "" || $("#n"+ (i+1)).attr("id") == "n1"){
+				var notes = $("#n" + (i+1)).val()
+			}
 
-			vars["set" + (i+1)] = {q: question, a: answer}
+			vars["set" + (i+1)] = {q: question, a: answer, n: notes}
 		}
 
 		//gets the object and updates question array
@@ -261,7 +272,8 @@ function read(){
 			<center>\
 				<div class='questionDiv'>\
 					<textarea class='qclass' id='q" + c + "' rows='6' cols='45' style='resize:none; 'placeholder='Enter question here' type='text'></textarea>\
-					<textarea class='aclass' id='a" + c + "' rows='6' cols='45' style='resize:none; 'placeholder='Enter answer here'type='text'></textarea><br>\
+					<textarea class='aclass' id='a" + c + "' rows='6' cols='45' style='resize:none; 'placeholder='Enter answer here'type='text'></textarea>\
+					<textarea class='nclass' id='n" + c + "' rows='6' cols='45' style='resize:none; 'placeholder='Enter notes here'type='text'></textarea><br>\
 					<button class='deleteButton'>Delete</button><br>\
 				</div>\
 			</center>\
