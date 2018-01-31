@@ -1,0 +1,44 @@
+@font-face{
+	font-family:"Pangolin";
+	src: url("Pangolin-Regular.ttf") format("truetype");
+}
+
+.menu {
+	height: 25px;
+	width: 125px;
+	font-variant: small-caps;
+	background-image: linear-gradient(rgba(255,255,255,0.6), rgba(194,194,214,1));
+	border: 1px solid black;
+}
+
+h1{
+	font-family: Pangolin;
+	font-size: 400%;
+	margin: 15px;
+}
+
+#theme {
+	height: 40px;
+	width: 250px;
+	border-radius: 25px;
+	text-align: center;
+	padding-left: 50px;
+}
+
+#themeButton {
+	background-image: linear-gradient(rgba(255,255,255,0.6), rgb(101, 213, 95));
+	border: 0.5px black;
+	border-radius: 30px;
+	width: 50px;
+	height: 50px;
+}
+
+#theme, #themeButton{
+		margin-top: 30px;
+}
+
+#check {
+	color: green;
+  margin: 0;
+  font-size: 20px;
+}

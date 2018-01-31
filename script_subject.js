@@ -39,20 +39,18 @@ $(document).ready(function(){
         <button class='menu'>Home</button>\
       </a>\
       <a href='#'>\
+        <button class='menu'>Add Topic</button>\
+      </a>\
+      <a href='#'>\
         <button class='menu'>Study All</button>\
       </a>\
       <a href='index_review'>\
-        <button class='menu'>Review</button>\
-      </a>\
-      <a href='index_edit.html'>\
-        <button class='menu'>Edit</button>\
-      </a>\
-      <a href='#'>\
-        <button class='menu'>Add Topic</button>\
-      </a>\
+        <button class='menu'>Review All</button>\
+      </a><br>\
       <select id='theme'>\
         <option data-color_rgb='rgba(255,255,255,0)'>Choose a theme color</option>\
-      <select><br>\
+      <select>\
+      <button id='themeButton'><p id='check' style='color: green;'>&#x2714</p></button<br>\
     </center>\
   ")
 
