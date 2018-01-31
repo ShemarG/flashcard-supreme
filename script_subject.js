@@ -31,6 +31,7 @@ $(document).ready(function(){
 		{rgb:"rgb(255,51,102)", colorName:"Fruit Punch"}
 	];
 
+  $("body").css("background-color", currentArray.themeColor);
 
   $("body").prepend("\
     <center>\
@@ -72,12 +73,22 @@ for (i=0; i<themeArray.length; i++){
   //console.log(themeArray[i].rgb)
 }
 
+$("#themeButton").click(function(){
+  console.log(JSON.parse(localStorage.subjectArr));
+  subjects[gotSubject] = currentArray;
+  localStorage.setItem("subjectArr", JSON.stringify(subjects))
+  $("#themeButton").css("background-image", "linear-gradient(rgba(255,255,255,0.6), rgb(101, 213, 95))")
+  $("#check").css("color", "green")
+})
+
 
 $(document).on("change", "#theme", function(){
   var opt = $(this).find(":selected");
   var color = opt.data("color_rgb")
   $("body").css("background-color", color);
   currentArray.themeColor = color;
+  $("#themeButton").css("background-image", "linear-gradient(rgba(255,255,255,0.6), rgba(255, 0, 0, 0.6))")
+  $("#check").css("color", "red")
 
   })
 
