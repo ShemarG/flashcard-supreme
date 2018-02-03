@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="shortcut icon" type="image/x-icon" href="pencil_JsJ_icon.ico"/>
+	<script type="text/javascript" src="jquery-3.1.1.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="style_create.css">
+</head>
+<body>
+	<center>
+		<h1>New Subject</h1>
+		<a href="index.html"><button id="homeButton">Home</button></a><br>
+		<a href="index_subject.html"><button id="subjectButton">Back</button></a><br>
+		<input id="topName" type='text' placeholder="Enter name"></input><input id="submit" type="button" value="Enter"></input>
+	</center>
+</body>
+<script>
+	var subjects = JSON.parse(localStorage.subjectArr);
+	var gotSubject = localStorage.setSubject;
+	var currentArray = subjects[gotSubject].topics;
+
+	var vars = {};
+
+	console.log(currentArray);
+
+	$("#submit").click(function(){
+		var tName = $("#topName").val();
+		var tName2 = tName.replace(/\s/g, "");
+		vars[tName2] = {topicName: tName2, tDisplayName: tName, questions: []};
+		currentArray.push(vars);
+		vars = {};
+
+		localStorage.setItem("subjectArr", JSON.stringify(subjects));
+		$("#topName").val("");
+
+		alert("Topic Created!");
+
+	})
+</script>
+</html>
