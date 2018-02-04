@@ -17,12 +17,11 @@ h1{
 	margin: 15px;
 }
 
-#color1 {
+#color1, #color2, #theme {
 	height: 40px;
-	width: 250px;
+	width: 150px;
 	border-radius: 25px;
 	text-align: center;
-	padding-left: 50px;
 }
 
 #color1Button {

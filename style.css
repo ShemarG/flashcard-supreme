@@ -27,12 +27,15 @@ body{
 	width: 500px;
 }
 
-.subjectDiv{
-	border: 3.5px groove white;
+.subjectButton{
+	border: 3.5px outset grey;
 	border-radius: 15px;
 	text-align: center;
-	padding: 15px;
-	background-image: linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0));
+	padding-top: 25px;
+	padding-bottom: 25px;
+	padding-left: 100px;
+	padding-right: 100px;
+	/* background-image: linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0)); */
 	word-wrap: break-word;
 	margin: 10px;
 }

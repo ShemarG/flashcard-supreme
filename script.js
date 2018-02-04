@@ -39,30 +39,31 @@ $(document).ready(function(){
 				if(subjects[key].brief === undefined || subjects[key].brief == ""){
 
 					$("#container").append("\
-						<button style='background-color:" + subjects[key].color1 + ";' data-sub='" + subjects[key].subjectName + "' class='subjectButton'><p class='subjTitle'>" + subjects[key].displayName + "</p></button>\
+						<button style='background-color:" + subjects[key].color1 + ";'data-sub='" + subjects[key].subjectName + "' class='subjectButton'><p class='subjTitle'>" + subjects[key].displayName + "</p></button>\
 					")
-					// $("#container").append("\
-					// 	<div style='background-color:" + subjects[key].color1 + "; border-color:" + subjects[key].color1 + ";' data-sub='" + subjects[key].subjectName + "' class='subjectDiv'><p class='subjTitle'>" + subjects[key].displayName + "</p>\
-					// 		<button style='background-color:" + subjects[key].color1 + ";' class='studyButton divButtons'>Quiz</button>\
-					// 		<button style='background-color:" + subjects[key].color1 + ";' class='reviewButton divButtons'>Review</button>\
-					// 		<button style='background-color:" + subjects[key].color1 + ";' class='editButton divButtons'>Edit</button>\
-					// 	</div><br>\
-					// ");
+
 				}else{
 					$("#container").append("\
-						<button style='background-color:" + subjects[key].color1 + ";' data-sub='" + subjects[key].subjectName + "' class='subjectButton'><p class='subjTitle'>" + subjects[key].displayName + "</p><p class='brief'>" + subjects[key].brief + "</p></button>\
+						<button style='background-color:" + subjects[key].color1 + ";'data-sub='" + subjects[key].subjectName + "' class='subjectButton'><p class='subjTitle'>" + subjects[key].displayName + "</p><p class='brief'>" + subjects[key].brief + "</p></button>\
 					")
-					// $("#container").append("\
-					// 	<div style='background-color:" + subjects[key].color1 + "; border-color:" + subjects[key].color1 + ";' data-sub='" + subjects[key].subjectName + "' class='subjectDiv'><p class='subjTitle'>" + subjects[key].displayName + "</p>\
-					// 		<p class='brief'>" + subjects[key].brief + "</p>\
-					// 		<button style='background-color:" + subjects[key].color1 + ";' class='studyButton divButtons'>Quiz</button>\
-					// 		<button style='background-color:" + subjects[key].color1 + ";' class='reviewButton divButtons'>Review</button>\
-					// 		<button style='background-color:" + subjects[key].color1 + ";' class='editButton divButtons'>Edit</button>\
-					// 	</div><br>\
-					// ");
 				}
 			}
 		}
+
+		function setTheme() {
+			$(".subjectButton").each(function(){
+				var tData = $(this).data("sub")
+				console.log(tData);
+
+				for (var key in subjects){
+					if (subjects[key].subjectName === tData){
+						$(this).css("background-image", subjects[key].themeData)
+					} else {}
+				}
+			})
+		}
+
+		setTheme();
 
 		console.log(subjects)
 
