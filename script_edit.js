@@ -2,7 +2,7 @@ $(document).ready(function(){
 
 	var subjects = JSON.parse(localStorage.subjectArr);
 	var gotSubject = localStorage.setSubject;
-	var currentArray = subjects[gotSubject];
+	var currentArray = subjects[gotSubject].topics;
 
 	var saveState;
 	var changes = 0
