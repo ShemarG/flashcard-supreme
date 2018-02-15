@@ -2,12 +2,26 @@ $(document).ready(function(){
 
 	var subjects = JSON.parse(localStorage.subjectArr);
 	var gotSubject = localStorage.setSubject;
-	var currentArray = subjects[gotSubject].topics;
+	var gotTopic = localStorage.setTopic;
+	var currentArray = subjects[gotSubject];
+	var currentTopic;
+
+	for(i=0; i<currentArray.topics.length; i++){
+		for (key in currentArray.topics[i]){
+			var topic = currentArray.topics[i][key];
+
+			if (topic.topicName === gotTopic){
+				currentTopic = topic;
+			} else {}
+		}
+	}
+
+	console.log(currentTopic);
 
 	var saveState;
 	var changes = 0
 
-	var themeArray = [
+	var colorArray = [
 		{rgb:"rgb(255,51,51)", colorName:"Red"},
 		{rgb:"rgb(255,102,51)", colorName:"Red-Orange"},
 		{rgb:"rgb(255,153,51)", colorName:"Orange"},
@@ -44,38 +58,49 @@ $(document).ready(function(){
 		console.log(saveState);
 	})
 
-	$("body").css("background-color", currentArray.themeColor);
+	$("body").css("background-color", currentTopic.color);
 
-	$("head").append("<title>" + currentArray.displayName + "</title>")
+	$("head").append("<title>" + currentTopic.tDisplayName + "</title>")
 
 	$("body").append("\
 		<center>\
-			<div class='title'><h1>" + currentArray.displayName + "</h1></div>\
-			<a href='index.html'>\
-				<button id='homeButton'>Home</button>\
-			</a>\
+			<div id='title'><h1>" + currentTopic.tDisplayName + "</h1></div>\
+			<div id='nav'>\
+        <a href='index.html'>\
+          <button class='menu'>Home</button>\
+        </a>\
+				<a href='index_subject.html'>\
+          <button class='menu'>Back</button>\
+        </a>\
+				<a href='index_review.html'>\
+          <button id='reviewButton' class='menu'>Review</button>\
+        </a>\
+        <a href='#'>\
+          <button class='menu'>Quiz</button>\
+        </a>\
+      </div>\
 			<select id='theme'>\
 				<option data-color_rgb='rgba(255,255,255,0)'>Choose a theme color</option>\
 			<select><br>\
 		</center>\
 	");
 
-	for (i=0; i<themeArray.length; i++){
+	for (i=0; i<colorArray.length; i++){
 
 		var getColor = $("body").css("background-color")
 		var nospace = getColor.replace(/\s+/g, '');
 
-		if(themeArray[i].rgb == nospace) {
+		if(colorArray[i].rgb == nospace) {
 			$("#theme").append("\
-				<option selected='selected' data-color_rgb=" + themeArray[i].rgb + ">" + themeArray[i].colorName + "</option>\
+				<option selected='selected' data-color_rgb=" + colorArray[i].rgb + ">" + colorArray[i].colorName + "</option>\
 			")
 		}else{
 
 			$("#theme").append("\
-				<option data-color_rgb=" + themeArray[i].rgb + ">" + themeArray[i].colorName + "</option>\
+				<option data-color_rgb=" + colorArray[i].rgb + ">" + colorArray[i].colorName + "</option>\
 			")
 		}
-		//console.log(themeArray[i].rgb)
+		//console.log(colorArray[i].rgb)
 	}
 
 
@@ -83,13 +108,13 @@ $(document).ready(function(){
 		var opt = $(this).find(":selected");
 		var color = opt.data("color_rgb")
 		$("body").css("background-color", color);
-		currentArray.themeColor = color;
+		currentTopic.color = color;
 	})
 
-	if (currentArray.brief !== undefined){
+	if (currentTopic.brief !== undefined){
 		$("body").append("\
 			<center>\
-				<textarea rows='2' cols='75' style='resize:none;' placeholder='Add a description' id='descript'>" + currentArray.brief + "</textarea>\
+				<textarea rows='2' cols='75' style='resize:none;' placeholder='Add a description' id='descript'>" + currentTopic.brief + "</textarea>\
 			</center>\
 		")
 	}else{
@@ -100,13 +125,22 @@ $(document).ready(function(){
 		")
 	}
 
+	function isChecked(input){
+		if (input !== false){
+			return "checked"
+		} else {
+			return
+		}
+	}
 
 
-	if(currentArray.questions.length == 0){
+	if(currentTopic.questions.length == 0){
+		var x = i+1;
 		$("body").append("\
 			<div id='container'>\
 				<center>\
 					<div class='questionDiv'>\
+					" + x + "\
 						<textarea class='qclass' id='q1' rows='6' cols='45' style='resize:none; 'placeholder='Enter question here' type='text'></textarea>\
 						<textarea class='aclass' id='a1' rows='6' cols='45' style='resize:none; 'placeholder='Enter answer here'type='text'></textarea>\
 						<textarea class='aclass' id='n1' rows='6' cols='45' style='resize:none; 'placeholder='Enter notes here'type='text'></textarea><br>\
@@ -135,13 +169,17 @@ $(document).ready(function(){
 			</center>\
 		")
 
-		for (i = 0; i < currentArray.questions.length; i++) {
+		for (i = 0; i < currentTopic.questions.length; i++) {
+			var x = i+1;
 			$("#container").append("\
 				<center>\
 					<div class='questionDiv'>\
-						<textarea class='qclass' rows='6' cols='45' style='resize:none; 'placeholder='Enter question here' type='text'>" + currentArray.questions[i].q + "</textarea>\
-						<textarea class='aclass' rows='6' cols='45' style='resize:none; 'placeholder='Enter answer here' type='text'>" + currentArray.questions[i].a + "</textarea>\
-						<textarea class='nclass' rows='6' cols='45' style='resize:none; 'placeholder='Enter notes here' type='text'></textarea><br>\
+					" + x + "\
+						<textarea class='qclass' rows='6' cols='45' style='resize:none; 'placeholder='Enter question here' type='text'>" + currentTopic.questions[i].q + "</textarea>\
+						<textarea class='aclass' rows='6' cols='45' style='resize:none; 'placeholder='Enter answer here' type='text'>" + currentTopic.questions[i].a + "</textarea>\
+						<textarea class='nclass' rows='6' cols='45' style='resize:none; 'placeholder='Enter notes here' type='text'>" + currentTopic.questions[i].n + "</textarea><br>\
+						<input class='addToQuiz' name='add' type='checkbox' " + isChecked(currentTopic.questions[i].checked) + "></input>\
+						<label for='add'>Include in Quiz</label>\
 						<button class='deleteButton'>Delete</button><br>\
 					</div>\
 				</center>\
@@ -151,20 +189,21 @@ $(document).ready(function(){
 	}
 
 	$("#export").prop("readOnly", true);
-	$("#export").val('{"' + currentArray.subjectName + '":' + JSON.stringify(currentArray) + '}')
+	$("#export").val('{"' + currentTopic.topicName + '":' + JSON.stringify(currentTopic) + '}')
 
 
 function read(){
 		var a = $("#container").find(".questionDiv");
 		var vars = {};
-		currentArray.questions = [];
+		currentTopic.questions = [];
 
-		currentArray.brief = $("#descript").val();
+		currentTopic.brief = $("#descript").val();
 
 		//generic counters
 		var i1 = 0;
 		var i2 = 0;
 		var i3 = 0;
+		var i4 = 0;
 
 		//question module
   		$(".qclass").each(function(){
@@ -184,8 +223,15 @@ function read(){
     		$(this).attr("id", ("n"+ i3))
   		})
 
+			$(".addToQuiz").each(function(){
+				i4++;
+				$(this).attr("id", ("box" + i4))
+			})
+
   		//reads the values
 		for(i = 0; i < a.length; i++){
+
+			var box = $("#box"+ (i+1)).prop("checked")
 
 			if( $("#q"+ (i+1)).val() != "" || $("#q"+ (i+1)).attr("id") == "q1"){
 				var question = $("#q" + (i+1)).val();
@@ -203,13 +249,13 @@ function read(){
 				var notes = $("#n" + (i+1)).val()
 			}
 
-			vars["set" + (i+1)] = {q: question, a: answer, n: notes}
+			vars["set" + (i+1)] = {q: question, a: answer, n: notes, checked: box}
 		}
 
 		//gets the object and updates question array
 		for (var k in vars){
 			if (vars.hasOwnProperty(k)){
-				currentArray.questions.push(vars[k]);
+				currentTopic.questions.push(vars[k]);
 			}else{}
 		}
 		subjects[gotSubject] = currentArray;
@@ -241,7 +287,7 @@ function read(){
 		if (sure == true){
 			delete subjects[gotSubject];
 			localStorage.setItem("subjectArr", JSON.stringify(subjects));
-			window.location.href = "index.html";
+			window.location.href = "index_subject.html";
 		}else{}
 	})
 
@@ -255,7 +301,7 @@ function read(){
 
 	$("body").on("click", "#save", function(){
 		save();
-		$("#export").val('{"' + currentArray.subjectName + '":' + JSON.stringify(currentArray) + '}');
+		$("#export").val('{"' + currentTopic.subjectName + '":' + JSON.stringify(currentTopic) + '}');
 	})
 
 	window.onbeforeunload = function(){
@@ -279,6 +325,10 @@ function read(){
 			</center>\
 		")
 
+	})
+
+	$(".addToQuiz").click(function(){
+		console.log($(this).prop("checked"))
 	})
 
 });

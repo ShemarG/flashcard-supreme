@@ -4,6 +4,8 @@ $(document).ready(function(){
   var gotSubject = localStorage.setSubject;
   var currentArray = subjects[gotSubject];
 
+  console.log(currentArray);
+
   var themeObject = {
     brickWall: {
       name: "Brick Wall",
@@ -37,7 +39,7 @@ $(document).ready(function(){
     },
     graphPaper: {
       name: "Graph Paper",
-      tag: "grpah-paper",
+      tag: "graph-paper",
       url: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.7'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"
     },
     hideout: {
@@ -120,31 +122,33 @@ $(document).ready(function(){
 
 
   $("body").prepend("\
-    <center>\
-      <div class='title'><h1>" + currentArray.displayName + "</h1></div>\
-      <a href='index.html'>\
-        <button class='menu'>Home</button>\
-      </a>\
-      <a href='index_tCreate.html'>\
-        <button class='menu'>Add Topic</button>\
-      </a>\
-      <a href='#'>\
-        <button class='menu'>Study All</button>\
-      </a>\
-      <a href='index_review'>\
-        <button class='menu'>Review All</button>\
-      </a><br>\
-      <select id='theme'>\
-        <option>Choose a pattern</option>\
-      <select>\
-      <select id='color1'>\
-        <option data-color_rgb='rgba(255,255,255,0)'>Choose a background color</option>\
-      <select>\
-      <select id='color2'>\
-        <option>Choose a theme color</option>\
-      <select>\
-      <button id='color1Button'><p id='check' style='color: green;'>&#x2714</p></button<br>\
-    </center>\
+      <div id='title'><h1>" + currentArray.displayName + "</h1></div>\
+      <div id='nav'>\
+        <a href='index.html'>\
+          <button class='menu'>Home</button>\
+        </a>\
+        <a href='index_tCreate.html'>\
+          <button class='menu'>Add Topic</button>\
+        </a>\
+        <a href='#'>\
+          <button class='menu'>Study All</button>\
+        </a>\
+        <a href='index_review'>\
+          <button class='menu'>Review All</button>\
+        </a><br>\
+      </div>\
+      <div id='themeMenu'>\
+        <select id='theme'>\
+          <option>Choose a pattern</option>\
+        <select>\
+        <select id='color1'>\
+          <option data-color_rgb='rgba(255,255,255,0)'>Choose a background color</option>\
+        <select>\
+        <select id='color2'>\
+          <option>Choose a theme color</option>\
+        <select>\
+        <button id='color1Button'><p id='check' style='color: green;'>&#x2714</p></button<br>\
+      </div>\
   ")
 
 for (var key in themeObject){
@@ -193,10 +197,11 @@ for (i=0; i<colorArray.length; i++){
 for (i=0; i<currentArray.topics.length; i++){
   for (var key in currentArray.topics[i]){
     var topic = currentArray.topics[i][key]
+    console.log(topic.color)
 
     if (topic.breif === undefined || topic.brief == ""){
       $("#container").append("\
-      	<div data-sub='" + topic.topicName + "' class='topDiv'><p class='topTitle'>" + topic.tDisplayName + "</p>\
+      	<div style='background-color:" + topic.color + ";' data-sub='" + topic.topicName + "' class='topDiv'><p class='topTitle'>" + topic.tDisplayName + "</p><br>\
       		<button class='studyButton topButtons'>Quiz</button>\
       		<button class='reviewButton topButtons'>Review</button>\
       		<button class='editButton topButtons'>Edit</button>\
@@ -204,7 +209,7 @@ for (i=0; i<currentArray.topics.length; i++){
       ");
     } else {
       $("#container").append("\
-      	<div data-sub='" + topic.topicName + "' class='topDiv'><p class='topTitle'>" + topic.tDisplayName + "</p>\
+      	<div style='background-color:" + topic.color + ";' data-sub='" + topic.topicName + "' class='topDiv'><p class='topTitle'>" + topic.tDisplayName + "</p><br>\
       		<p class='brief'>" + topic.brief + "</p>\
       		<button class='studyButton topButtons'>Quiz</button>\
       		<button class='reviewButton topButtons'>Review</button>\
@@ -234,6 +239,7 @@ $(document).on("change", "#theme", function(){
     } else {}
   }
 
+  setThemeColor();
   $("#color1Button").css("background-image", "linear-gradient(rgba(255,255,255,0.6), rgba(255, 0, 0, 0.6))")
   $("#check").css("color", "red")
 
@@ -292,12 +298,40 @@ $(document).on("change", "#color2", function(){
         if (topic.topicName === b){
           if (localStorage.setTopic !== undefined){
             localStorage.setTopic = topic.topicName;
+            window.location.href = "index_edit.html";
+
           } else {
             localStorage.setItem("setTopic", topic.topicName)
+            window.location.href = "index_edit.html";
           }
         } else {}
       }
     }
+
+
+  });
+
+  $(".reviewButton").click(function(){
+    var a = $(this).parent();
+    var b = a.data("sub");
+
+    for (i = 0; i < currentArray.topics.length; i++){
+      for(key in currentArray.topics[i]){
+        var topic = currentArray.topics[i][key];
+
+        if (topic.topicName === b){
+          if (localStorage.setTopic !== undefined){
+            localStorage.setTopic = topic.topicName;
+            window.location.href = "index_review.html";
+
+          } else {
+            localStorage.setItem("setTopic", topic.topicName)
+            window.location.href = "index_review.html";
+          }
+        } else {}
+      }
+    }
+
 
   });
 

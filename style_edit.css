@@ -6,15 +6,20 @@
 h1{
 	font-family: Pangolin;
 	font-size: 400%;
-	margin: 15px;
+	margin: auto;
 }
 
 #theme{
-	height: 25px;
-	width: 200px;
+	height: 1%;
+	width: 15%;
+	border-radius: 25px;
+	border: 4px inset grey;
+	padding: 1%;
+	margin: 1%;
 }
 
-.title {
+#title {
+	font-size: 200%;
 	word-wrap: break-word;
 }
 
@@ -31,12 +36,22 @@ h1{
 	background: #80ff00;
 }
 
-#homeButton{
-	height: 25px;
+#nav{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.menu {
+	height: 50px;
 	width: 125px;
+	margin: 0 5px 0 5px;
 	font-variant: small-caps;
-	background-image: linear-gradient(rgba(255,255,255,0.6), rgba(194,194,214,1));
-	border: 1px solid black
+	background-image: linear-gradient(rgba(255,255,255,1), rgba(148,77,255,0.8));
+	border: 1.5px solid black;
+	border-radius: 15px;
+	-webkit-transition: 0.5s;
+	transition: 0.5s;
 }
 
 #container{
@@ -53,6 +68,10 @@ h1{
 	border: 3px grey groove;
 	border-radius: 15px;
 	background-color: lightgrey;
+}
+
+#addToQuiz{
+
 }
 
 #descript{

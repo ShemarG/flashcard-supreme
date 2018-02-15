@@ -1,0 +1,92 @@
+@font-face {
+	font-family:"Pangolin";
+	src: url("Pangolin-Regular.ttf") format("truetype");
+}
+
+body {
+	text-align: center;
+}
+
+h1 {
+	font-family: Pangolin;
+	font-size: 400%;
+	margin: 5px;
+}
+
+#title{
+	text-align: center;
+	font-size: 180%;
+}
+
+#nav{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.menu {
+	height: 50px;
+	width: 125px;
+	margin: 0 5px 0 5px;
+	font-variant: small-caps;
+	background-image: linear-gradient(rgba(255,255,255,1), rgba(148,77,255,0.8));
+	border: 1.5px solid black;
+	border-radius: 15px;
+	-webkit-transition: 0.5s;
+	transition: 0.5s;
+}
+
+#container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	margin-top: 25px;
+}
+
+#flashcard {
+	border: 10px outset grey;
+	border-radius: 35px;
+	width: 60%;
+	height: 310px;
+	margin: 10px;
+	/* display: inline-block; */
+	padding: 5%;
+}
+
+.content {
+	display: flex;
+	justify-content: center;
+	/* margin: 0; */
+}
+
+#notes {
+	/* display: flex; */
+}
+
+#question {
+	/* margin-top: 5%;
+	margin-bottom: 5%; */
+	height: 15%;
+}
+
+#answer {
+	/* margin-top: 5%;
+	margin-bottom: 5%; */
+	height: 10%;
+}
+
+.arrows {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ width: 80px;
+ height: 80px;
+ border-radius: 50px;
+ background-image: linear-gradient(rgba(255,255,255,1), rgba(148,77,255,0.8));
+}
+
+.arrows-inner{
+	font-size: 24pt;
+	color: rgba(148,77,255,1);
+}
