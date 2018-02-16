@@ -80,4 +80,16 @@ $(document).ready(function(){
     } else {}
   })
 
+  $(document).keyup(function(event){
+       if (event.keyCode == 39){
+       		$("#next").click();
+       }
+ 	});
+
+	$(document).keyup(function(event){
+       if (event.keyCode == 37){
+       		$("#prev").click();
+       }
+ 	});
+
 })

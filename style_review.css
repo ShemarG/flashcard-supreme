@@ -57,6 +57,7 @@ h1 {
 .content {
 	display: flex;
 	justify-content: center;
+	font-family: Georgia;
 	/* margin: 0; */
 }
 
