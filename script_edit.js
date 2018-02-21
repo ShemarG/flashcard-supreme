@@ -5,6 +5,7 @@ $(document).ready(function(){
 	var gotTopic = localStorage.setTopic;
 	var currentArray = subjects[gotSubject];
 	var currentTopic;
+	var questionCount;
 
 	for(i=0; i<currentArray.topics.length; i++){
 		for (key in currentArray.topics[i]){
@@ -63,26 +64,24 @@ $(document).ready(function(){
 	$("head").append("<title>" + currentTopic.tDisplayName + "</title>")
 
 	$("body").append("\
-		<center>\
-			<div id='title'><h1>" + currentTopic.tDisplayName + "</h1></div>\
-			<div id='nav'>\
-        <a href='index.html'>\
-          <button class='menu'>Home</button>\
-        </a>\
-				<a href='index_subject.html'>\
-          <button class='menu'>Back</button>\
-        </a>\
-				<a href='index_review.html'>\
-          <button id='reviewButton' class='menu'>Review</button>\
-        </a>\
-        <a href='#'>\
-          <button class='menu'>Quiz</button>\
-        </a>\
-      </div>\
-			<select id='theme'>\
-				<option data-color_rgb='rgba(255,255,255,0)'>Choose a theme color</option>\
-			<select><br>\
-		</center>\
+		<div id='title'><h1>" + currentTopic.tDisplayName + "</h1></div>\
+		<div id='nav'>\
+      <a href='index.html'>\
+        <button class='menu'>Home</button>\
+      </a>\
+			<a href='index_subject.html'>\
+        <button class='menu'>Back</button>\
+      </a>\
+			<a href='index_review.html'>\
+        <button id='reviewButton' class='menu'>Review</button>\
+      </a>\
+      <a href='#'>\
+        <button class='menu'>Quiz</button>\
+      </a>\
+    </div>\
+		<select id='theme'>\
+			<option data-color_rgb='rgba(255,255,255,0)'>Choose a theme color</option>\
+		<select>\
 	");
 
 	for (i=0; i<colorArray.length; i++){
@@ -113,15 +112,11 @@ $(document).ready(function(){
 
 	if (currentTopic.brief !== undefined){
 		$("body").append("\
-			<center>\
-				<textarea rows='2' cols='75' style='resize:none;' placeholder='Add a description' id='descript'>" + currentTopic.brief + "</textarea>\
-			</center>\
+			<textarea rows='2' cols='75' style='resize:none;' placeholder='Add a description' id='descript'>" + currentTopic.brief + "</textarea>\
 		")
 	}else{
 		$("body").append("\
-			<center>\
-				<textarea rows='2' cols='75' style='resize:none;' placeholder='Add a description' id='descript'></textarea>\
-			</center>\
+			<textarea rows='2' cols='75' style='resize:none;' placeholder='Add a description' id='descript'></textarea>\
 		")
 	}
 
@@ -135,54 +130,55 @@ $(document).ready(function(){
 
 
 	if(currentTopic.questions.length == 0){
-		var x = i+1;
+		questionCount = i+1;
 		$("body").append("\
 			<div id='container'>\
-				<center>\
-					<div class='questionDiv'>\
-					" + x + "\
+				<div class='questionDiv'>\
+					<div class='questionDiv-inner-content'>\
+						" + x + "\
 						<textarea class='qclass' id='q1' rows='6' cols='45' style='resize:none; 'placeholder='Enter question here' type='text'></textarea>\
 						<textarea class='aclass' id='a1' rows='6' cols='45' style='resize:none; 'placeholder='Enter answer here'type='text'></textarea>\
-						<textarea class='aclass' id='n1' rows='6' cols='45' style='resize:none; 'placeholder='Enter notes here'type='text'></textarea><br>\
-						<button class='deleteButton'>Delete</button><br>\
+						<textarea class='aclass' id='n1' rows='6' cols='45' style='resize:none; 'placeholder='Enter notes here'type='text'></textarea>\
 					</div>\
-				</center>\
+						<div class='questionDiv-inner-actions'>\
+						<button class='deleteButton'>Delete</button>\
+					</div>\
 			</div>\
-			<center>\
-				<div class='actions'>\
-					<button id='addQuestion'>Add Question</button><button id='save'>Save</button><button id='deleteSubject'>Delete Subject</button><br>\
-				</div>\
-			</center>\
+			<div class='actions'>\
+				<button id='addQuestion'>Add Question</button><button id='save'>Save</button><button id='deleteTopic'>Delete Topic</button>\
+			</div>\
 		")
 	}else{
 
 		$("body").append("\
-			<div id='container'></div>\
-			<center>\
-				<div class='actions'>\
-					<button id='addQuestion'>Add Question</button><button id='save'>Save</button><button id='deleteSubject'>Delete Subject</button><br>\
-				</div>\
-				<div id='share'>\
-					<p>Share these flashcards with friends by sending them this data. Make sure you've saved already! (Ctrl/Cmd + A highlights it real nice.)</p>\
-				</div>\
+		<div id='container'></div>\
+			<div class='actions'>\
+				<button id='addQuestion'>Add Question</button><button id='save'>Save</button><button id='deleteTopic'>Delete Topic</button>\
+			</div>\
+			<div id='share'>\
+				<p>Share these flashcards with friends by sending them this data. Make sure you've saved already! (Ctrl/Cmd + A highlights it real nice.)</p>\
 				<textarea rows='10' cols='100' id='export'></textarea>\
-			</center>\
+			</div>\
 		")
 
 		for (i = 0; i < currentTopic.questions.length; i++) {
-			var x = i+1;
+			questionCount = i+1;
 			$("#container").append("\
-				<center>\
-					<div class='questionDiv'>\
-					" + x + "\
+				<div class='questionDiv'>\
+					<div class='questionDiv-inner-content'>\
+						" + questionCount + "\
 						<textarea class='qclass' rows='6' cols='45' style='resize:none; 'placeholder='Enter question here' type='text'>" + currentTopic.questions[i].q + "</textarea>\
 						<textarea class='aclass' rows='6' cols='45' style='resize:none; 'placeholder='Enter answer here' type='text'>" + currentTopic.questions[i].a + "</textarea>\
-						<textarea class='nclass' rows='6' cols='45' style='resize:none; 'placeholder='Enter notes here' type='text'>" + currentTopic.questions[i].n + "</textarea><br>\
-						<input class='addToQuiz' name='add' type='checkbox' " + isChecked(currentTopic.questions[i].checked) + "></input>\
-						<label for='add'>Include in Quiz</label>\
-						<button class='deleteButton'>Delete</button><br>\
+						<textarea class='nclass' rows='6' cols='45' style='resize:none; 'placeholder='Enter notes here' type='text'>" + currentTopic.questions[i].n + "</textarea>\
 					</div>\
-				</center>\
+					<div class='questionDiv-inner-actions'>\
+						<div class='questionDiv-inner-checkbox'>\
+							<input class='addToQuiz' name='add' type='checkbox' " + isChecked(currentTopic.questions[i].checked) + "></input>\
+							<label for='add'>Include in Quiz</label>\
+						</div>\
+						<button class='deleteButton'>Delete</button>\
+					</div>\
+				</div>\
 			")
 		};
 
@@ -267,12 +263,15 @@ function read(){
 	//deletion module
 	$("body").on("click", ".deleteButton", function(){
 		var noofContainers = $(this).parents("#container");
-		var index = noofContainers.children("center").length;
+		var index = noofContainers.children(".questionDiv").length;
+
+		console.log(index)
 
 		if(index != 1){
-			var a = $(this).parents("center");
+			var a = $(this).parents(".questionDiv");
+			var b = a.children(".questionDiv-inner-content")
 
-			if($(this).siblings(".aclass").val() == "" && $(this).siblings(".qclass").val() == ""){
+			if(b.children(".aclass").val() == "" && b.children(".qclass").val() == ""){
 				a.remove();
 			}else{
 				a.remove();
@@ -281,8 +280,8 @@ function read(){
 		}else{}
 	})
 
-	$("#deleteSubject").click(function(){
-		var sure = confirm("Are you sure you want to delete this subject? You will lose all your data forever if you do!");
+	$("#deleteTopic").click(function(){
+		var sure = confirm("Are you sure you want to delete this topic? You will lose all your data forever if you do!");
 
 		if (sure == true){
 			delete subjects[gotSubject];
@@ -314,15 +313,23 @@ function read(){
 		var a = $("#container").children(".questionDiv");
 		var b = a.length;
 		var c = b+1;
+
 		$("#container").append("\
-			<center>\
-				<div class='questionDiv'>\
+			<div class='questionDiv'>\
+				<div class='questionDiv-inner-content'>\
+					" + c + "\
 					<textarea class='qclass' id='q" + c + "' rows='6' cols='45' style='resize:none; 'placeholder='Enter question here' type='text'></textarea>\
 					<textarea class='aclass' id='a" + c + "' rows='6' cols='45' style='resize:none; 'placeholder='Enter answer here'type='text'></textarea>\
-					<textarea class='nclass' id='n" + c + "' rows='6' cols='45' style='resize:none; 'placeholder='Enter notes here'type='text'></textarea><br>\
-					<button class='deleteButton'>Delete</button><br>\
+					<textarea class='nclass' id='n" + c + "' rows='6' cols='45' style='resize:none; 'placeholder='Enter notes here'type='text'></textarea>\
 				</div>\
-			</center>\
+				<div class='questionDiv-inner-actions'>\
+					<div class='questionDiv-inner-checkbox'>\
+						<input class='addToQuiz' name='add' type='checkbox' checked></input>\
+						<label for='add'>Include in Quiz</label>\
+					</div>\
+					<button class='deleteButton'>Delete</button>\
+				</div>\
+			</div>\
 		")
 
 	})
